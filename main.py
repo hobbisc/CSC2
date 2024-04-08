@@ -6,8 +6,8 @@ def cipher():
     ask_key = True
 
     #User Instructions
-    if (y_n := input('Would you like to view the program instructions? ')) in yes:
-        print('Placeholder, will add instructions once code is complete.')
+    if input('Would you like to view the program instructions? ') in yes:
+        print("First, enter the string that you want to encrypt or decrypt using the Caesar Cipher. Then the program will ask you for a key.") #Not done, will continue
         input('\n{PRESS ENTER}')
 
     #User Inputs
