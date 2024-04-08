@@ -7,7 +7,7 @@ def cipher():
 
     #User Instructions
     if input('Would you like to view the program instructions? ') in yes:
-        print("First, enter the string that you want to encrypt or decrypt using the Caesar Cipher. Then the program will ask you for a key.") #Not done, will continue
+        print("First, enter the string that you want to encrypt or decrypt using the Caesar Cipher. Then the program will ask you for a key. \nThis key is used to determine how many times the program will shift the letters in your message. \nFor example, if your key were 3, the message 'ABC' would now be 'DEF'. \nNegative numbers go the opposite direction, if your key were -3, the message 'ABC' would instead be 'XYZ'. \nOnce the program has given you your encrypted/decrypted message, you will be given the option to encrypt/decrypt another message.") 
         input('\n{PRESS ENTER}')
 
     #User Inputs
