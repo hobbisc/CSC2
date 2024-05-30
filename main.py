@@ -1,3 +1,5 @@
+import math
+
 #User Restart Process
 #Defines the entire program as its own function. Allows the user to restart the program without ever stopping the program.
 def cipher():
@@ -7,17 +9,18 @@ def cipher():
 
     #User Instructions
     if input('Would you like to view the program instructions? ') in yes:
-        print("First, enter the string that you want to encrypt or decrypt using the Caesar Cipher. Then the program will ask you for a key. \nThis key is used to determine how many times the program will shift the letters in your message. \nFor example, if your key were 3, the message 'ABC' would now be 'DEF'. \nNegative numbers go the opposite direction, if your key were -3, the message 'ABC' would instead be 'XYZ'. \nOnce the program has given you your encrypted/decrypted message, you will be given the option to encrypt/decrypt another message.") 
+        print("\nFirst, enter the string that you want to shift using the Caesar Cipher. Then the program will ask you for a key. \nThis key is used to determine how many times the program will shift the letters in your message. \nFor example, if your key were 3, the message 'ABC' would now be 'DEF'. \nNegative numbers go the opposite direction, if your key were -3, the message 'ABC' would instead be 'XYZ'. \nOnce the program has given you your shifted message, you will be given the option to shift using the Caesar Cipher another message.") 
         input('\n{PRESS ENTER}')
 
-    #User Inputs
-        
+    #User Inputs   
     #Asks for string that the program will later shift.
-    print('What would you like to encrypt/decrypt? ')
+
+    print('What would you like to shift using the Caesar Cipher? ')
     while (string := input('')) == '':
-        print('Please enter the string you would like to encrypt/decrypt. ')
+        print('Please enter the string you would like to shift. ')
 
     #Asks for the number by which the program will shift the letters of the string. Won't allow non-integers.
+
     print('What key would you like to use? ')
     while ask_key:
         key = input('')
@@ -25,13 +28,10 @@ def cipher():
         try:                #Found out about try and except, very useful for checking for integers.
             key = int(key)
         except ValueError:
+            print("Key must be a whole number, and not contain any letters or symbols.")
             ask_key = True
 
-
-
-
     #Encryption/Decryption Process
-
     #This section doesn't require any user inputs.
 
     newstring = ""
@@ -45,10 +45,10 @@ def cipher():
 
             alpha_num = alpha_num + key
 
-            while alpha_num < 0:
-                alpha_num += 26
-            while alpha_num > 25:
-                alpha_num -= 26
+            if alpha_num < 0:
+                alpha_num += math.floor(alpha_num/26) * -26
+            if alpha_num > 25:
+                alpha_num -= math.floor(alpha_num/26) * 26
 
             if char.islower():
                 newchar = char.replace(char, alpha[alpha_num].lower())
@@ -62,7 +62,7 @@ def cipher():
     print("Here is your shifted string.")
     print(newstring)
 
-    print("Would you like to encrypt/decrypt anything else?")
+    print("Would you like to shift anything else?")
     if input('') in yes:
         cipher()
 
